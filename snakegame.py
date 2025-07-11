@@ -1,5 +1,6 @@
 import turtle
 import time
+import random  # ✅ Import random
 
 delay = 0.1
 
@@ -8,7 +9,7 @@ wn = turtle.Screen()
 wn.title("Snake Game by @Susansapkota")
 wn.bgcolor("green")
 wn.setup(width=600, height=600)
-wn.tracer(0)  # Turns off the screen update
+wn.tracer(0)
 
 # Snake head
 head = turtle.Turtle()
@@ -17,7 +18,15 @@ head.shape("square")
 head.color("black")
 head.penup()
 head.goto(0, 0)
-head.direction = "right"
+head.direction = "stop"
+
+# Snake food
+food = turtle.Turtle()
+food.speed(0)
+food.shape("circle")
+food.color("red")
+food.penup()
+food.goto(0, 100)
 
 # Movement function
 def move():
@@ -65,6 +74,14 @@ wn.onkey(go_right, "Right")
 while True:
     wn.update()
     move()
+
+    #  Check for collision with food
+    if head.distance(food) < 20:
+        #move the food to a random spot
+        x = random.randint(-290, 290)
+        y = random.randint(-290, 290)
+        food.goto(x, y)
+
     time.sleep(delay)
 
 wn.mainloop()
