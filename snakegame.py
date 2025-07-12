@@ -9,7 +9,7 @@ high_score = 0
 # Set up the screen
 wn = turtle.Screen()
 wn.title("Snake Game by @Susansapkota")
-wn.bgcolor("white")
+wn.bgcolor("Teal")
 wn.setup(width=600, height=600)
 wn.tracer(0)
 
